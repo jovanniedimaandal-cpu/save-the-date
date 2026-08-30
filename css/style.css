@@ -1,0 +1,1778 @@
+:root{
+  --intro-background:#090807;
+  --main-background:#F8F4E9;
+  --soft-background:#F1E8D6;
+  --card-background:#EEE5D2;
+  --card-alt:#E7DAC1;
+
+  --primary-text:#4A4036;
+  --secondary-text:#75695C;
+  --muted-text:#968A7D;
+
+  --accent:#6B7A50;
+  --accent-dark:#4F6039;
+
+  --gold:#C7A87A;
+  --gold-soft:#DCC7A2;
+
+  --white:#fff;
+
+  --border:rgba(107,122,80,.25);
+  --shadow:rgba(50,42,34,.12);
+
+  --serif:Georgia,"Times New Roman",serif;
+  --sans:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+
+
+/* ============================================================
+   RESET
+   ============================================================ */
+
+*{
+  box-sizing:border-box;
+}
+
+html,
+body{
+  margin:0;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+}
+
+body{
+  font-family:var(--sans);
+  color:var(--primary-text);
+  background:var(--intro-background);
+}
+
+button,
+input{
+  font:inherit;
+}
+
+button{
+  border:0;
+}
+
+
+/* ============================================================
+   MAIN EXPERIENCE
+   ============================================================ */
+
+#experience{
+  position:relative;
+  width:100vw;
+  height:100svh;
+  overflow:hidden;
+  background:var(--main-background);
+}
+
+
+/* ============================================================
+   SCENES
+   ============================================================ */
+
+.scene{
+  position:absolute;
+  inset:0;
+
+  display:grid;
+  place-items:center;
+
+  padding:
+    70px
+    24px
+    85px;
+
+  background:var(--main-background);
+
+  opacity:0;
+  visibility:hidden;
+
+  transform:translateX(8%);
+
+  transition:
+    opacity .55s ease,
+    transform .7s ease,
+    visibility 0s linear .7s;
+}
+
+.scene.active{
+  opacity:1;
+  visibility:visible;
+  transform:none;
+
+  transition:
+    opacity .65s ease,
+    transform .75s ease;
+}
+
+
+/* ============================================================
+   CONTENT
+   ============================================================ */
+
+.inner{
+  width:min(950px,100%);
+  text-align:center;
+}
+
+.narrow{
+  width:min(650px,100%);
+}
+
+.eyebrow{
+  margin:0;
+
+  color:var(--accent);
+
+  font-size:.7rem;
+  font-weight:700;
+
+  letter-spacing:.24em;
+  text-transform:uppercase;
+}
+
+h2{
+  margin:14px 0 18px;
+
+  font-family:var(--serif);
+  font-size:clamp(2.2rem,5vw,4.6rem);
+  font-weight:400;
+  line-height:1.05;
+
+  color:var(--primary-text);
+}
+
+p{
+  line-height:1.8;
+  color:var(--secondary-text);
+}
+
+
+/* ============================================================
+   INTRO
+   ============================================================ */
+
+.intro{
+  color:var(--white);
+  background:var(--intro-background);
+}
+
+.intro .eyebrow{
+  color:var(--gold);
+}
+
+/* ============================================================
+   INTRO — NAME BY NAME REVEAL
+   ============================================================ */
+
+.intro .inner{
+  position:relative;
+  z-index:2;
+}
+
+/* Everything starts hidden */
+.intro-word{
+  opacity:0;
+  transform:translateY(18px);
+  animation:introWordReveal .8s cubic-bezier(.22,1,.36,1) forwards;
+}
+
+/* SAVE THE DATE */
+.intro-word-1{
+  animation-delay:.75s;
+}
+
+/* JOVANNIE */
+.intro-word-2{
+  animation-delay:1.25s;
+}
+
+/* & */
+.intro-word-3{
+  animation-delay:1.75s;
+}
+
+/* SHENALYN */
+.intro-word-4{
+  animation-delay:2.25s;
+}
+
+/* DATE */
+.intro-word-5{
+  animation-delay:2.75s;
+}
+
+/* BEGIN */
+.intro-word-6{
+  animation-delay:3.25s;
+}
+
+@keyframes introWordReveal{
+  from{
+    opacity:0;
+    transform:translateY(18px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.intro h1{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  gap:18px;
+
+  margin:18px 0;
+
+  font:
+    400
+    clamp(3.1rem,8vw,7rem)
+    var(--serif);
+
+  line-height:.95;
+}
+
+.intro h1 em{
+  font-size:.42em;
+  color:var(--gold);
+}
+
+.intro .date{
+  color:var(--white);
+
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+
+
+/* ============================================================
+   PRIMARY BUTTON
+   ============================================================ */
+
+.primary{
+  min-width:175px;
+
+  margin-top:24px;
+  padding:15px 28px;
+
+  border:1px solid var(--accent);
+  border-radius:999px;
+
+  background:var(--accent);
+  color:var(--white);
+
+  cursor:pointer;
+
+  font-size:.72rem;
+  font-weight:700;
+
+  letter-spacing:.18em;
+  text-transform:uppercase;
+
+  transition:
+    transform .25s ease,
+    background .25s ease,
+    box-shadow .25s ease;
+}
+
+.primary:hover{
+  background:var(--accent-dark);
+
+  transform:translateY(-2px);
+
+  box-shadow:
+    0 10px 25px
+    rgba(79,96,57,.18);
+}
+
+.primary:active{
+  transform:translateY(0);
+}
+
+.primary:disabled{
+  opacity:.55;
+  cursor:not-allowed;
+  transform:none;
+}
+
+
+/* Intro button */
+
+.intro .primary{
+  background:var(--gold);
+  color:#3D342A;
+  border-color:var(--gold);
+}
+
+.intro .primary:hover{
+  background:#D4B88A;
+}
+
+
+/* ============================================================
+   TEXT BUTTONS
+   ============================================================ */
+
+.text-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  min-height:42px;
+
+  margin-top:26px;
+  padding:9px 15px;
+
+  background:transparent;
+  color:var(--accent-dark);
+
+  border:1px solid transparent;
+  border-radius:999px;
+
+  cursor:pointer;
+
+  font-size:.72rem;
+  font-weight:700;
+
+  letter-spacing:.15em;
+  text-transform:uppercase;
+
+  transition:
+    background .25s ease,
+    border-color .25s ease,
+    transform .25s ease;
+}
+
+.text-btn:hover{
+  background:rgba(107,122,80,.08);
+  border-color:var(--border);
+  transform:translateY(-1px);
+}
+
+.text-btn:active{
+  transform:translateY(0);
+}
+
+
+/* ============================================================
+   COUNTDOWN
+   ============================================================ */
+
+.countdown{
+  display:grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap:12px;
+
+  width:min(850px,100%);
+
+  margin:38px auto 24px;
+  padding:16px;
+
+  border:1px solid var(--border);
+  border-radius:22px;
+
+  background:var(--card-background);
+
+  box-shadow:
+    0 18px 50px
+    var(--shadow);
+}
+
+.countdown div{
+  padding:27px 10px;
+
+  border-radius:15px;
+
+  background:var(--card-alt);
+}
+
+.countdown strong{
+  display:block;
+
+  font:
+    400
+    clamp(2.4rem,6vw,5.2rem)
+    var(--serif);
+
+  line-height:1;
+}
+
+.countdown span{
+  display:block;
+
+  margin-top:10px;
+
+  font-size:.65rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+
+  color:var(--secondary-text);
+}
+
+.countdown-hashtag{
+  margin:18px auto 4px;
+
+  color:var(--accent);
+  font-size:.72rem;
+  font-weight:700;
+  letter-spacing:.12em;
+
+  opacity:.92;
+}
+
+
+/* ============================================================
+   CARDS
+   ============================================================ */
+
+.card{
+  margin:30px auto 0;
+  padding:32px;
+
+  border:1px solid var(--border);
+  border-radius:22px;
+
+  background:var(--card-background);
+
+  box-shadow:
+    0 18px 50px
+    var(--shadow);
+}
+
+
+/* ============================================================
+   CODE FORM
+   ============================================================ */
+
+.card label{
+  display:block;
+
+  margin-bottom:10px;
+
+  text-align:left;
+
+  font-size:.7rem;
+  font-weight:700;
+
+  letter-spacing:.14em;
+  text-transform:uppercase;
+
+  color:var(--secondary-text);
+}
+
+.card input{
+  width:100%;
+
+  padding:16px 18px;
+
+  border:1px solid var(--gold);
+  border-radius:12px;
+
+  outline:0;
+
+  background:var(--main-background);
+  color:var(--primary-text);
+
+  text-transform:uppercase;
+  letter-spacing:.1em;
+
+  transition:
+    border-color .2s ease,
+    box-shadow .2s ease;
+}
+
+.card input:focus{
+  border-color:var(--accent);
+
+  box-shadow:
+    0 0 0 4px
+    rgba(107,122,80,.10);
+}
+
+.card .primary{
+  width:100%;
+}
+
+.card p:last-child{
+  min-height:20px;
+
+  font-size:.85rem;
+}
+
+
+/* ============================================================
+   SEATS
+   ============================================================ */
+
+.seat-number{
+  display:block;
+
+  margin-top:8px;
+
+  font:
+    400
+    4rem
+    var(--serif);
+
+  color:var(--accent-dark);
+}
+
+.small{
+  font-size:.86rem;
+}
+
+
+/* ============================================================
+   RSVP RESPONSE CARDS
+   ============================================================ */
+
+.responses{
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:16px;
+
+  width:min(900px,100%);
+
+  margin:35px auto;
+}
+
+.responses button{
+  min-height:225px;
+
+  padding:28px 20px;
+
+  border:1px solid var(--border);
+  border-radius:20px;
+
+  background:var(--card-background);
+  color:var(--primary-text);
+
+  cursor:pointer;
+
+  box-shadow:
+    0 10px 35px
+    var(--shadow);
+
+  transition:
+    transform .3s ease,
+    border-color .3s ease,
+    background .3s ease,
+    box-shadow .3s ease;
+}
+
+.responses button:hover{
+  transform:translateY(-6px);
+
+  border-color:var(--accent);
+
+  background:var(--soft-background);
+
+  box-shadow:
+    0 16px 40px
+    rgba(50,42,34,.15);
+}
+
+.responses button:active{
+  transform:translateY(-1px) scale(.99);
+}
+
+.responses b{
+  display:block;
+
+  margin-bottom:20px;
+
+  color:var(--gold);
+
+  font:
+    2rem
+    var(--serif);
+}
+
+.responses strong{
+  display:block;
+
+  margin-bottom:8px;
+
+  font:
+    400
+    1.8rem
+    var(--serif);
+}
+
+.responses span{
+  font-size:.86rem;
+  color:var(--secondary-text);
+}
+
+
+/* ============================================================
+   ESTIMATE PICKER
+   ============================================================ */
+
+.picker{
+  display:flex;
+
+  justify-content:center;
+  gap:12px;
+
+  flex-wrap:wrap;
+
+  margin:32px;
+}
+
+.number{
+  width:58px;
+  height:58px;
+
+  border-radius:50%;
+
+  border:1px solid var(--gold);
+
+  background:var(--card-background);
+  color:var(--primary-text);
+
+  cursor:pointer;
+
+  transition:
+    background .25s ease,
+    color .25s ease,
+    border-color .25s ease,
+    transform .25s ease,
+    box-shadow .25s ease;
+}
+
+.number:hover,
+.number.selected{
+  background:var(--accent);
+  color:var(--white);
+
+  border-color:var(--accent);
+
+  transform:scale(1.06);
+
+  box-shadow:
+    0 8px 20px
+    rgba(79,96,57,.18);
+}
+
+
+/* ============================================================
+   SUCCESS
+   ============================================================ */
+
+.success{
+  display:grid;
+  place-items:center;
+
+  width:70px;
+  height:70px;
+
+  margin:0 auto 24px;
+
+  border:1px solid var(--gold);
+  border-radius:50%;
+
+  background:var(--card-background);
+
+  color:var(--accent);
+
+  font-size:1.6rem;
+}
+
+
+/* ============================================================
+   DEADLINE
+   ============================================================ */
+
+.deadline{
+  background:var(--soft-background);
+}
+
+.deadline h3{
+  margin:12px 0 20px;
+
+  font:
+    400
+    clamp(1.8rem,4vw,3rem)
+    var(--serif);
+}
+
+.mini{
+  display:flex;
+
+  justify-content:center;
+  gap:10px;
+
+  flex-wrap:wrap;
+}
+
+.mini span{
+  padding:9px 12px;
+
+  border-radius:9px;
+
+  background:var(--card-background);
+
+  font-size:.7rem;
+
+  color:var(--secondary-text);
+}
+
+.mini b{
+  color:var(--accent-dark);
+}
+
+
+/* ============================================================
+   FINAL SCREEN
+   ============================================================ */
+
+.names{
+  font:
+    400
+    clamp(2rem,5vw,4rem)
+    var(--serif);
+}
+
+.hashtag{
+  color:var(--accent);
+  font-weight:700;
+  letter-spacing:.1em;
+}
+
+
+/* ============================================================
+   CORNER DATE
+   ============================================================ */
+
+.corner{
+  position:fixed;
+
+  z-index:10;
+
+  top:20px;
+  right:25px;
+
+  color:var(--muted-text);
+
+  font-size:.62rem;
+  font-weight:700;
+
+  letter-spacing:.12em;
+  text-transform:uppercase;
+
+  pointer-events:none;
+}
+
+.corner-hashtag{
+  top:auto;
+  right:25px;
+  bottom:20px;
+
+  color:var(--accent);
+
+  font-size:.58rem;
+  letter-spacing:.1em;
+}
+
+
+/* ============================================================
+   PROGRESS DOTS
+   ============================================================ */
+
+.dots{
+  position:fixed;
+
+  z-index:10;
+
+  left:50%;
+  bottom:20px;
+
+  display:flex;
+  align-items:center;
+
+  gap:7px;
+
+  transform:translateX(-50%);
+
+  pointer-events:none;
+}
+
+.dot{
+  width:7px;
+  height:7px;
+
+  padding:0;
+
+  border-radius:50%;
+
+  background:var(--gold-soft);
+
+  opacity:.55;
+
+  pointer-events:none;
+}
+
+.dot.active{
+  width:21px;
+
+  border-radius:99px;
+
+  background:var(--accent);
+
+  opacity:1;
+}
+
+
+/* ============================================================
+   INTRO MOTIF
+   ============================================================ */
+
+.motif{
+  position:absolute;
+  inset:0;
+
+  overflow:hidden;
+
+  pointer-events:none;
+}
+
+.motif i{
+  position:absolute;
+
+  left:50%;
+  top:50%;
+
+  width:min(65vw,650px);
+  height:min(65vw,650px);
+
+  border:1px solid var(--gold);
+  border-radius:50%;
+
+  transform:
+    translate(-50%,-50%)
+    scale(.55);
+
+  opacity:0;
+
+  animation:
+    circle 1.5s .1s forwards;
+}
+
+.motif i:nth-child(2){
+  width:min(80vw,800px);
+  height:min(80vw,800px);
+
+  animation-delay:.2s;
+}
+
+.motif i:nth-child(3){
+  width:min(48vw,480px);
+  height:min(48vw,480px);
+
+  animation-delay:.3s;
+}
+
+.motif b{
+  position:absolute;
+
+  left:50%;
+  top:50%;
+
+  transform:
+    translate(-50%,-50%)
+    scale(.5);
+
+  color:var(--gold);
+
+  opacity:0;
+
+  animation:
+    star 1s .5s forwards;
+}
+
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+
+@keyframes circle{
+  to{
+    opacity:.25;
+
+    transform:
+      translate(-50%,-50%)
+      scale(1);
+  }
+}
+
+@keyframes star{
+  to{
+    opacity:.8;
+
+    transform:
+      translate(-50%,-50%)
+      scale(1);
+  }
+}
+
+@keyframes rise{
+  from{
+    opacity:0;
+    transform:translateY(18px);
+  }
+
+  to{
+    opacity:1;
+    transform:none;
+  }
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media(max-width:700px){
+
+  .scene{
+    padding:
+      50px
+      18px
+      72px;
+
+    overflow-y:auto;
+    overflow-x:hidden;
+  }
+
+
+  .inner{
+    padding:
+      10px
+      0
+      15px;
+  }
+
+
+  h2{
+    font-size:
+      clamp(
+        2rem,
+        9vw,
+        3.2rem
+      );
+
+    margin-top:12px;
+  }
+
+
+  p{
+    line-height:1.65;
+  }
+
+
+  /* ----------------------------------------------------------
+     INTRO
+     ---------------------------------------------------------- */
+
+  .intro{
+    overflow:hidden;
+  }
+
+  .intro .inner{
+    padding:0 10px;
+  }
+
+  .intro h1{
+    flex-direction:column;
+
+    gap:7px;
+
+    font-size:
+      clamp(
+        3rem,
+        15vw,
+        5rem
+      );
+  }
+
+  .intro h1 em{
+    font-size:.34em;
+  }
+
+  .intro .date{
+    font-size:.68rem;
+    letter-spacing:.14em;
+  }
+
+
+  /* ----------------------------------------------------------
+     BUTTONS
+     ---------------------------------------------------------- */
+
+  .primary{
+    min-width:
+      min(175px,100%);
+
+    padding:
+      15px
+      22px;
+  }
+
+  .text-btn{
+    min-height:44px;
+
+    margin-top:16px;
+
+    padding:
+      9px
+      13px;
+  }
+
+
+  /* ----------------------------------------------------------
+     COUNTDOWN
+     ---------------------------------------------------------- */
+
+  .countdown{
+    grid-template-columns:
+      repeat(2,1fr);
+
+    gap:9px;
+
+    margin-top:28px;
+
+    padding:11px;
+
+    border-radius:18px;
+  }
+
+  .countdown div{
+    padding:
+      22px
+      7px;
+
+    border-radius:13px;
+  }
+
+  .countdown strong{
+    font-size:
+      clamp(
+        2.1rem,
+        11vw,
+        3.6rem
+      );
+  }
+
+
+  /* ----------------------------------------------------------
+     CARDS
+     ---------------------------------------------------------- */
+
+  .card{
+    margin-top:22px;
+
+    padding:
+      24px
+      19px;
+
+    border-radius:18px;
+  }
+
+
+  /* ----------------------------------------------------------
+     CODE INPUT
+     ---------------------------------------------------------- */
+
+  .card input{
+    padding:
+      15px
+      14px;
+
+    font-size:.9rem;
+  }
+
+
+  /* ----------------------------------------------------------
+     SEATS
+     ---------------------------------------------------------- */
+
+  .seat-number{
+    font-size:3.5rem;
+  }
+
+
+  /* ----------------------------------------------------------
+     RSVP
+     ---------------------------------------------------------- */
+
+  .responses{
+    grid-template-columns:1fr;
+
+    gap:11px;
+
+    margin:
+      25px auto
+      15px;
+
+    max-height:none;
+  }
+
+  .responses button{
+    min-height:0;
+
+    padding:
+      19px
+      18px;
+
+    border-radius:17px;
+
+    display:grid;
+
+    grid-template-columns:
+      auto
+      1fr;
+
+    column-gap:12px;
+
+    align-items:center;
+
+    text-align:left;
+  }
+
+  .responses b{
+    grid-row:
+      span 2;
+
+    margin:0;
+
+    font-size:1.7rem;
+  }
+
+  .responses strong{
+    display:block;
+
+    margin:0;
+
+    font-size:1.45rem;
+  }
+
+  .responses span{
+    display:block;
+
+    font-size:.78rem;
+  }
+
+
+  /* ----------------------------------------------------------
+     PICKER
+     ---------------------------------------------------------- */
+
+  .picker{
+    margin:
+      25px
+      10px;
+
+    gap:10px;
+  }
+
+  .number{
+    width:54px;
+    height:54px;
+  }
+
+
+  /* ----------------------------------------------------------
+     DEADLINE
+     ---------------------------------------------------------- */
+
+  .deadline{
+    padding:
+      22px
+      16px;
+  }
+
+  .deadline h3{
+    font-size:
+      clamp(
+        1.65rem,
+        8vw,
+        2.5rem
+      );
+  }
+
+  .mini{
+    gap:7px;
+  }
+
+  .mini span{
+    padding:
+      8px
+      10px;
+
+    font-size:.66rem;
+  }
+
+
+  /* ----------------------------------------------------------
+     FINAL NAMES
+     ---------------------------------------------------------- */
+
+  .names{
+    font-size:
+      clamp(
+        1.8rem,
+        9vw,
+        3rem
+      );
+  }
+
+
+  /* ----------------------------------------------------------
+     DATE
+     ---------------------------------------------------------- */
+
+  .corner{
+    top:13px;
+    right:14px;
+
+    font-size:.55rem;
+  }
+
+
+  /* ----------------------------------------------------------
+     PROGRESS
+     ---------------------------------------------------------- */
+
+  .dots{
+    bottom:12px;
+    gap:6px;
+  }
+
+}
+
+
+/* ============================================================
+   VERY SMALL PHONES
+   ============================================================ */
+
+@media(max-width:380px){
+
+  .scene{
+    padding:
+      46px
+      14px
+      68px;
+  }
+
+  .intro h1{
+    font-size:
+      clamp(
+        2.7rem,
+        14vw,
+        4rem
+      );
+  }
+
+  h2{
+    font-size:
+      clamp(
+        1.85rem,
+        9vw,
+        2.7rem
+      );
+  }
+
+  .card{
+    padding:
+      20px
+      15px;
+  }
+
+  .responses button{
+    padding:
+      17px
+      15px;
+  }
+
+}
+
+
+/* ============================================================
+   ACCESSIBILITY
+   ============================================================ */
+
+button:focus-visible,
+input:focus-visible{
+  outline:
+    3px solid
+    rgba(199,168,122,.55);
+
+  outline-offset:3px;
+}
+
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+
+@media(prefers-reduced-motion:reduce){
+
+  *,
+  *::before,
+  *::after{
+
+    animation-duration:.01ms!important;
+
+    animation-iteration-count:1!important;
+
+    transition-duration:.01ms!important;
+
+    scroll-behavior:auto!important;
+  }
+
+}
+
+
+
+/* ============================================================
+   CODE ENTRY DEADLINE
+   ============================================================ */
+
+.code-deadline{
+  width:100%;
+  margin:18px auto 0;
+  padding:20px 22px;
+
+  border:1px solid var(--border);
+  border-radius:18px;
+
+  background:var(--soft-background);
+
+  box-shadow:0 10px 30px var(--shadow);
+}
+
+.code-deadline .eyebrow{
+  margin-bottom:8px;
+}
+
+.code-deadline h3{
+  margin:6px 0 14px;
+
+  font:
+    400
+    clamp(1.45rem,4vw,2.2rem)
+    var(--serif);
+
+  color:var(--primary-text);
+}
+
+.code-deadline .mini{
+  gap:7px;
+}
+
+.code-deadline .mini span{
+  padding:7px 10px;
+
+  border-radius:8px;
+
+  background:var(--card-background);
+
+  font-size:.65rem;
+}
+
+.code-deadline .mini b{
+  color:var(--accent-dark);
+}
+
+
+/* Mobile */
+
+@media(max-width:700px){
+
+  .code-deadline{
+    margin-top:15px;
+    padding:17px 13px;
+  }
+
+  .code-deadline h3{
+    font-size:
+      clamp(
+        1.35rem,
+        7vw,
+        2rem
+      );
+  }
+
+  .code-deadline .mini{
+    gap:5px;
+  }
+
+  .code-deadline .mini span{
+    padding:7px 8px;
+    font-size:.6rem;
+  }
+
+}
+
+/* ============================================================
+   BACK BUTTON
+   ============================================================ */
+
+.back-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  margin-top:14px;
+  margin-right:8px;
+
+  min-height:42px;
+  padding:9px 16px;
+
+  border:1px solid var(--border);
+  border-radius:999px;
+
+  background:transparent;
+  color:var(--secondary-text);
+
+  cursor:pointer;
+
+  font-size:.7rem;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+
+  transition:
+    background .25s ease,
+    border-color .25s ease,
+    color .25s ease,
+    transform .25s ease;
+}
+
+.back-btn:hover{
+  background:var(--soft-background);
+  border-color:var(--gold);
+  color:var(--accent-dark);
+  transform:translateX(-2px);
+}
+
+.back-btn:active{
+  transform:translateX(0);
+}
+
+
+/* ============================================================
+   CODE ENTRY DEADLINE
+   ============================================================ */
+
+.code-deadline{
+  width:100%;
+  margin:18px auto 0;
+  padding:20px 22px;
+
+  border:1px solid var(--border);
+  border-radius:18px;
+
+  background:var(--soft-background);
+
+  box-shadow:
+    0 10px 30px
+    var(--shadow);
+}
+
+.code-deadline .eyebrow{
+  margin-bottom:8px;
+}
+
+.code-deadline h3{
+  margin:6px 0 14px;
+
+  font:
+    400
+    clamp(1.45rem,4vw,2.2rem)
+    var(--serif);
+
+  color:var(--primary-text);
+}
+
+.code-deadline .mini{
+  gap:7px;
+}
+
+.code-deadline .mini span{
+  padding:7px 10px;
+
+  border-radius:8px;
+
+  background:var(--card-background);
+
+  font-size:.65rem;
+}
+
+.code-deadline .mini b{
+  color:var(--accent-dark);
+}
+
+
+/* ============================================================
+   NAVIGATION ROW
+   ============================================================ */
+
+.scene-nav{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+
+  flex-wrap:wrap;
+
+  margin-top:18px;
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media(max-width:700px){
+
+  .back-btn{
+    min-height:44px;
+    padding:9px 14px;
+    margin-right:4px;
+  }
+
+  .code-deadline{
+    margin-top:15px;
+    padding:17px 13px;
+  }
+
+  .code-deadline h3{
+    font-size:
+      clamp(
+        1.35rem,
+        7vw,
+        2rem
+      );
+  }
+
+  .code-deadline .mini{
+    gap:5px;
+  }
+
+  .code-deadline .mini span{
+    padding:7px 8px;
+    font-size:.6rem;
+  }
+
+  .scene-nav{
+    gap:6px;
+    margin-top:15px;
+  }
+
+}
+
+/* ============================================================
+   SCENE CONTENT REVEAL — ONE ELEMENT AT A TIME
+   ============================================================ */
+
+.scene.active .inner > *{
+  opacity:0;
+  transform:translateY(18px);
+  animation:sceneReveal .75s cubic-bezier(.22,1,.36,1) forwards;
+}
+
+/* First element */
+.scene.active .inner > *:nth-child(1){
+  animation-delay:.12s;
+}
+
+/* Second element */
+.scene.active .inner > *:nth-child(2){
+  animation-delay:.28s;
+}
+
+/* Third element */
+.scene.active .inner > *:nth-child(3){
+  animation-delay:.44s;
+}
+
+/* Fourth element */
+.scene.active .inner > *:nth-child(4){
+  animation-delay:.60s;
+}
+
+/* Fifth element */
+.scene.active .inner > *:nth-child(5){
+  animation-delay:.76s;
+}
+
+/* Sixth element */
+.scene.active .inner > *:nth-child(6){
+  animation-delay:.92s;
+}
+
+/* Seventh element */
+.scene.active .inner > *:nth-child(7){
+  animation-delay:1.08s;
+}
+
+@keyframes sceneReveal{
+  from{
+    opacity:0;
+    transform:translateY(18px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+
+/* ============================================================
+   COUNTDOWN — BOXES APPEAR ONE BY ONE
+   ============================================================ */
+
+.scene.active .countdown > div{
+  opacity:0;
+  transform:translateY(14px) scale(.98);
+  animation:countdownReveal .65s cubic-bezier(.22,1,.36,1) forwards;
+}
+
+.scene.active .countdown > div:nth-child(1){
+  animation-delay:.48s;
+}
+
+.scene.active .countdown > div:nth-child(2){
+  animation-delay:.60s;
+}
+
+.scene.active .countdown > div:nth-child(3){
+  animation-delay:.72s;
+}
+
+.scene.active .countdown > div:nth-child(4){
+  animation-delay:.84s;
+}
+
+@keyframes countdownReveal{
+  from{
+    opacity:0;
+    transform:translateY(14px) scale(.98);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+
+
+/* ============================================================
+   RSVP CARDS — ONE BY ONE
+   ============================================================ */
+
+.scene.active .responses button{
+  opacity:0;
+  transform:translateY(18px);
+  animation:rsvpReveal .7s cubic-bezier(.22,1,.36,1) forwards;
+}
+
+.scene.active .responses button:nth-child(1){
+  animation-delay:.35s;
+}
+
+.scene.active .responses button:nth-child(2){
+  animation-delay:.52s;
+}
+
+.scene.active .responses button:nth-child(3){
+  animation-delay:.69s;
+}
+
+@keyframes rsvpReveal{
+  from{
+    opacity:0;
+    transform:translateY(18px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+
+/* ============================================================
+   ESTIMATE NUMBERS
+   ============================================================ */
+
+.scene.active .number{
+  opacity:0;
+  transform:translateY(12px) scale(.92);
+  animation:numberReveal .5s cubic-bezier(.22,1,.36,1) forwards;
+}
+
+.scene.active .number:nth-child(1){animation-delay:.35s}
+.scene.active .number:nth-child(2){animation-delay:.43s}
+.scene.active .number:nth-child(3){animation-delay:.51s}
+.scene.active .number:nth-child(4){animation-delay:.59s}
+.scene.active .number:nth-child(5){animation-delay:.67s}
+.scene.active .number:nth-child(6){animation-delay:.75s}
+
+@keyframes numberReveal{
+  from{
+    opacity:0;
+    transform:translateY(12px) scale(.92);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+
+
+/* ============================================================
+   BACK / CONTINUE BUTTONS
+   ============================================================ */
+
+.scene.active .text-btn,
+.scene.active .primary{
+  animation-duration:.7s;
+  animation-fill-mode:forwards;
+}
+
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+
+@media(prefers-reduced-motion:reduce){
+
+  .scene.active .inner > *,
+  .scene.active .countdown > div,
+  .scene.active .responses button,
+  .scene.active .number{
+    animation:none!important;
+    opacity:1!important;
+    transform:none!important;
+  }
+
+}
