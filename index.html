@@ -1,0 +1,773 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1"
+>
+
+<meta
+  name="theme-color"
+  content="#090807"
+>
+
+<title>Save the Date — Jovannie & Shenalyn</title>
+
+<link
+  rel="stylesheet"
+  href="css/style.css"
+>
+
+</head>
+
+
+<body>
+
+<main id="experience">
+
+
+<!-- ==========================================================
+     SCENE 0 — INTRO
+     ========================================================== -->
+
+<section
+  class="scene intro active"
+  data-scene="0"
+>
+
+  <div
+    class="motif"
+    aria-hidden="true"
+  >
+    <i></i>
+    <i></i>
+    <i></i>
+    <b>✦</b>
+  </div>
+
+
+  <div class="inner">
+
+    <p
+      class="eyebrow"
+      data-bind="title"
+    ></p>
+
+
+    <h1>
+  <span
+    class="intro-word intro-word-2"
+    data-bind="groom"
+  ></span>
+
+  <em
+    class="intro-word intro-word-3"
+  >&amp;</em>
+
+  <span
+    class="intro-word intro-word-4"
+    data-bind="bride"
+  ></span>
+</h1>
+
+
+    <p
+      class="date"
+      data-bind="date"
+    ></p>
+
+
+    <button
+      class="primary"
+      data-next
+      type="button"
+    >
+      Begin
+    </button>
+
+  </div>
+
+</section>
+
+
+
+<!-- ==========================================================
+     SCENE 1 — COUNTDOWN
+     ========================================================== -->
+
+<section
+  class="scene"
+  data-scene="1"
+>
+
+  <div class="inner">
+
+    <p class="eyebrow">
+      COUNTING DOWN TO OUR DAY
+    </p>
+
+
+    <h2>
+      Until we celebrate together
+    </h2>
+
+
+    <div class="countdown">
+
+      <div>
+        <strong data-main="days">00</strong>
+        <span>Days</span>
+      </div>
+
+      <div>
+        <strong data-main="hours">00</strong>
+        <span>Hours</span>
+      </div>
+
+      <div>
+        <strong data-main="minutes">00</strong>
+        <span>Minutes</span>
+      </div>
+
+      <div>
+        <strong data-main="seconds">00</strong>
+        <span>Seconds</span>
+      </div>
+
+    </div>
+
+
+    <p
+      class="countdown-hashtag"
+      data-bind="hashtag"
+      aria-label="Wedding hashtag"
+    ></p>
+
+
+    <p>
+      We can't wait to celebrate this special day with you.
+    </p>
+
+
+    <button
+      class="text-btn"
+      id="back1"
+      type="button"
+      onclick="previousScene()"
+    >
+      ← Back
+    </button>
+
+
+    <button
+      class="text-btn"
+      data-next
+      type="button"
+    >
+      Continue →
+    </button>
+
+  </div>
+
+</section>
+
+
+
+<!-- ==========================================================
+     SCENE 2 — MESSAGE
+     ========================================================== -->
+
+<section
+  class="scene"
+  data-scene="2"
+>
+
+  <div class="inner narrow">
+
+    <p class="eyebrow">
+      A LITTLE SOMETHING
+    </p>
+
+
+    <h2>
+      We have one little question...
+    </h2>
+
+
+    <p
+      class="copy"
+      data-bind="message"
+    ></p>
+
+
+    <button
+      class="text-btn"
+      type="button"
+      onclick="previousScene()"
+    >
+      ← Back
+    </button>
+
+
+    <button
+      class="primary"
+      data-next
+      type="button"
+    >
+      Let us know
+    </button>
+
+  </div>
+
+</section>
+
+
+
+<!-- ==========================================================
+     SCENE 3 — CODE
+     ========================================================== -->
+
+
+<section class="scene" data-scene="3">
+  <div class="inner narrow">
+
+    <p class="eyebrow">YOUR PERSONAL INVITATION</p>
+
+    <h2>Help us plan ahead</h2>
+
+    <p>
+      Enter your personal Save the Date code to continue.
+    </p>
+
+    <form id="codeForm" class="card">
+
+      <label for="code">
+        Save the Date Code
+      </label>
+
+      <input
+        id="code"
+        placeholder="SAVE-0001"
+        maxlength="30"
+        required
+      >
+
+      <button
+        class="primary"
+        type="submit"
+      >
+        Check My Invitation
+      </button>
+
+      <p id="codeMsg"></p>
+
+    </form>
+
+    <button
+  class="text-btn"
+  type="button"
+  onclick="previousScene()"
+>
+  ← Back
+</button>
+
+
+    <!-- DEADLINE COUNTDOWN -->
+
+    <div class="deadline code-deadline">
+
+      <p class="eyebrow">
+        PLEASE LET US KNOW BY
+      </p>
+
+      <h3 data-bind="deadline"></h3>
+
+      <div class="mini">
+
+        <span>
+          <b data-dead="days">00</b>
+          days
+        </span>
+
+        <span>
+          <b data-dead="hours">00</b>
+          hrs
+        </span>
+
+        <span>
+          <b data-dead="minutes">00</b>
+          min
+        </span>
+
+        <span>
+          <b data-dead="seconds">00</b>
+          sec
+        </span>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ==========================================================
+     SCENE 4 — WELCOME
+     ========================================================== -->
+
+<section
+  class="scene"
+  data-scene="4"
+>
+
+  <div class="inner narrow">
+
+    <p class="eyebrow">
+      WELCOME
+    </p>
+
+
+    <h2 id="welcome">
+      Welcome!
+    </h2>
+
+
+    <div class="card">
+
+      <p class="eyebrow">
+        YOUR INVITATION CURRENTLY INCLUDES
+      </p>
+
+
+      <strong
+        class="seat-number"
+        id="seats"
+      >
+        0
+      </strong>
+
+
+      <p>
+        seat<span id="seatPlural">s</span>
+      </p>
+
+
+      <p
+        class="small"
+        data-bind="formalNote"
+      ></p>
+
+    </div>
+
+
+    <button
+      class="text-btn"
+      type="button"
+      onclick="previousScene()"
+    >
+      ← Back
+    </button>
+
+
+    <button
+      class="primary"
+      data-next
+      type="button"
+    >
+      Continue
+    </button>
+
+  </div>
+
+</section>
+
+
+
+<!-- ==========================================================
+     SCENE 5 — ATTENDANCE
+     ========================================================== -->
+
+<section
+  class="scene"
+  data-scene="5"
+>
+
+  <div class="inner">
+
+    <p class="eyebrow">
+      HELP US PLAN AHEAD
+    </p>
+
+
+    <h2>
+      Will you be joining us?
+    </h2>
+
+
+    <div class="responses">
+
+
+      <button
+        type="button"
+        data-response="yes"
+      >
+
+        <b>♡</b>
+
+        <strong>
+          Yes
+        </strong>
+
+        <span>
+          We plan to attend
+        </span>
+
+      </button>
+
+
+
+      <button
+        type="button"
+        data-response="no"
+      >
+
+        <b>◇</b>
+
+        <strong>
+          No
+        </strong>
+
+        <span>
+          We won't be able to attend
+        </span>
+
+      </button>
+
+
+
+      <button
+        type="button"
+        data-response="unsure"
+      >
+
+        <b>~</b>
+
+        <strong>
+          Not sure yet
+        </strong>
+
+        <span>
+          We're still deciding
+        </span>
+
+      </button>
+
+
+    </div>
+
+
+    <button
+      class="text-btn"
+      type="button"
+      onclick="previousScene()"
+    >
+      ← Back
+    </button>
+
+  </div>
+
+</section>
+
+
+
+<!-- ==========================================================
+     SCENE 6 — ESTIMATE
+     ========================================================== -->
+
+<section
+  class="scene"
+  data-scene="6"
+>
+
+  <div class="inner narrow">
+
+    <p class="eyebrow">
+      A QUICK ESTIMATE
+    </p>
+
+
+    <h2>
+      How many are likely to attend?
+    </h2>
+
+
+    <p>
+      Choose an estimate from the seats currently available
+      to your invitation.
+    </p>
+
+
+    <div
+      id="picker"
+      class="picker"
+    ></div>
+
+
+    <p class="small">
+      This is only an early estimate.
+      Your formal RSVP will come later.
+    </p>
+
+
+    <button
+      class="text-btn"
+      type="button"
+      onclick="previousScene()"
+    >
+      ← Back
+    </button>
+
+
+    <button
+      class="primary"
+      id="yesConfirm"
+      type="button"
+    >
+      Confirm Estimate
+    </button>
+
+  </div>
+
+</section>
+
+
+
+<!-- ==========================================================
+     SCENE 7 — NOT SURE
+     ========================================================== -->
+
+<section
+  class="scene"
+  data-scene="7"
+>
+
+  <div class="inner narrow">
+
+    <p class="eyebrow">
+      NOT SURE YET
+    </p>
+
+
+    <h2>
+      We completely understand.
+    </h2>
+
+
+    <div class="card">
+
+      <p data-bind="unsure"></p>
+
+    </div>
+
+
+    <button
+      class="text-btn"
+      type="button"
+      onclick="previousScene()"
+    >
+      ← Back
+    </button>
+
+
+    <button
+      class="primary"
+      id="unsureConfirm"
+      type="button"
+    >
+      I Understand
+    </button>
+
+  </div>
+
+</section>
+
+
+
+<!-- ==========================================================
+     SCENE 8 — NOT ATTENDING
+     ========================================================== -->
+
+<section
+  class="scene"
+  data-scene="8"
+>
+
+  <div class="inner narrow">
+
+    <p class="eyebrow">
+      THANK YOU
+    </p>
+
+
+    <h2>
+      Thank you for letting us know.
+    </h2>
+
+
+    <p>
+      We're sorry you won't be able to celebrate with us,
+      but we truly appreciate your response.
+    </p>
+
+
+    <button
+      class="text-btn"
+      type="button"
+      onclick="previousScene()"
+    >
+      ← Back
+    </button>
+
+
+    <button
+      class="primary"
+      id="noConfirm"
+      type="button"
+    >
+      Submit Response
+    </button>
+
+  </div>
+
+</section>
+
+
+
+<!-- ==========================================================
+     SCENE 9 — RESPONSE RECEIVED
+     ========================================================== -->
+
+<section
+  class="scene"
+  data-scene="9"
+>
+
+  <div class="inner narrow">
+
+    <div class="success">
+      ✓
+    </div>
+
+
+    <p class="eyebrow">
+      RESPONSE RECEIVED
+    </p>
+
+
+    <h2 id="resultTitle">
+      Thank you!
+    </h2>
+
+
+    <p id="resultText"></p>
+
+
+    <button
+      class="text-btn"
+      data-next
+      type="button"
+    >
+      Continue →
+    </button>
+
+  </div>
+
+</section>
+
+
+
+<!-- ==========================================================
+     SCENE 10 — END
+     ========================================================== -->
+
+<section
+  class="scene"
+  data-scene="10"
+>
+
+  <div class="inner narrow">
+
+    <p class="eyebrow">
+      UNTIL THEN
+    </p>
+
+
+    <h2>
+      We hope to celebrate with you.
+    </h2>
+
+
+    <p class="names">
+
+      <span data-bind="groom"></span>
+
+      &amp;
+
+      <span data-bind="bride"></span>
+
+    </p>
+
+
+    <p
+      class="hashtag"
+      data-bind="hashtag"
+    ></p>
+
+
+    <button
+      class="text-btn"
+      id="restart"
+      type="button"
+    >
+      View Again ↗
+    </button>
+
+  </div>
+
+</section>
+
+
+
+<!-- ==========================================================
+     PROGRESS DOTS
+     ========================================================== -->
+
+<nav
+  class="dots"
+  aria-label="Progress"
+></nav>
+
+
+<div
+  class="corner"
+  data-bind="date"
+></div>
+
+
+<div
+  class="corner corner-hashtag"
+  data-bind="hashtag"
+></div>
+
+
+</main>
+
+
+<script src="js/wedding-data.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>
