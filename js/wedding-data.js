@@ -11,7 +11,7 @@ const SAVE_THE_DATE = {
     message:"We're getting married, and we'd love to know if you'll be able to celebrate this special day with us.",
     unsure:"For the time being, we will consider your seat(s) unavailable and may offer them to another guest. If your plans change, please contact us immediately so we can check whether seats are still available.",
     formalNote:"This Save the Date is only an initial attendance survey. A formal RSVP will follow later.",
-    hashtag:"#SHENtosintokayJV"
+    hashtag:"#OnceSHEENAlifetimewithJOVANNIE"
   },
   theme:{
   // =========================================================
