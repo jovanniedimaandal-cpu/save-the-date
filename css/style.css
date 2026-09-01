@@ -1254,13 +1254,17 @@ p{
   .corner{
     top:13px;
     right:14px;
+    max-width:170px;
+  }
 
+  .corner::after{
     font-size:.55rem;
+    line-height:1.4;
   }
 
   /* Keep the hashtag at the bottom on mobile.
-     .corner shares the same class, so explicitly reset
-     top here to prevent top+bottom positioning from clashing. */
+     The Bible verse belongs only to the upper .corner.
+     .corner-hashtag remains unchanged. */
   .corner-hashtag{
     top:auto;
     right:14px;
@@ -1909,7 +1913,23 @@ p{color:var(--secondary-text) !important}
 }
 
 .names{color:var(--primary-text) !important}
-.corner{color:var(--muted-text) !important}
+.corner{
+  color:transparent !important;
+  font-size:0 !important;
+}
+
+.corner::after{
+  content:"\201C A cord of three strands is not quickly broken.\201D\A Ecclesiastes 4:12";
+  white-space:pre-line;
+  color:var(--muted-text);
+  font-family:var(--serif);
+  font-size:.62rem;
+  font-weight:400;
+  line-height:1.45;
+  letter-spacing:.03em;
+  text-transform:none;
+  text-align:right;
+}
 .dot{background:var(--gold-soft) !important}
 .dot.active{background:var(--accent) !important}
 
@@ -2406,12 +2426,12 @@ input:focus-visible{
 /* ============================================================
    PHOTO STORY — SCENE 1 COVER
    ------------------------------------------------------------
-   Uses cover-photo.png as a soft photographic memory beneath
+   Uses cover-photo.jpg as a soft photographic memory beneath
    the invitation typography. The image is deliberately muted
    so the names remain the visual focus.
 
    Asset required in the same folder as this CSS:
-   cover-photo.png
+   cover-photo.jpg
    ============================================================ */
 
 .intro{
@@ -2466,10 +2486,14 @@ input:focus-visible{
 
 .intro .eyebrow{
   color:var(--accent) !important;
+  font-size:1rem;
+  letter-spacing:.20em;
 }
 
 .intro .date{
   color:var(--accent-dark) !important;
+  font-size:.9rem;
+  letter-spacing:.20em;
 }
 
 /* The cover CTA becomes the same olive family used throughout
@@ -2535,6 +2559,19 @@ input:focus-visible{
   text-shadow:0 1px 10px rgba(255,253,245,.34);
 }
 
+/* Scene 2 chapter label */
+.scene[data-scene="2"] .eyebrow{
+  font-size:0 !important;
+  letter-spacing:0 !important;
+}
+
+.scene[data-scene="2"] .eyebrow::after{
+  content:"BEFORE THE BIG DAY";
+  font-size:.7rem;
+  font-weight:700;
+  letter-spacing:.24em;
+}
+
 /* ============================================================
    MOBILE PHOTO TUNING
    ============================================================ */
@@ -2571,6 +2608,16 @@ input:focus-visible{
       0 2px 8px rgba(81,72,63,.09) !important;
   }
 
+  .intro .eyebrow{
+    font-size:.86rem;
+    letter-spacing:.17em;
+  }
+
+  .intro .date{
+    font-size:.80rem;
+    letter-spacing:.16em;
+  }
+
   .scene[data-scene="2"]{
     background:
       linear-gradient(
@@ -2598,5 +2645,75 @@ input:focus-visible{
   .intro::before,
   .intro::after{
     animation:none !important;
+  }
+}
+
+/* ============================================================
+   FINAL CORNER TEXT FIX
+   Upper-right = Ecclesiastes 4:12
+   Bottom-right = existing hashtag
+   ============================================================ */
+.corner{
+  top:20px !important;
+  right:25px !important;
+  bottom:auto !important;
+  z-index:30 !important;
+  color:transparent !important;
+  font-size:0 !important;
+  max-width:240px;
+}
+
+.corner::before{
+  content:none !important;
+}
+
+.corner::after{
+  content:"\201C A cord of three strands is not quickly broken.\201D\A Ecclesiastes 4:12" !important;
+  display:block !important;
+  white-space:pre-line !important;
+  color:var(--muted-text) !important;
+  font-family:var(--serif) !important;
+  font-size:.62rem !important;
+  font-weight:400 !important;
+  line-height:1.45 !important;
+  letter-spacing:.03em !important;
+  text-transform:none !important;
+  text-align:right !important;
+}
+
+.corner-hashtag{
+  top:auto !important;
+  right:25px !important;
+  bottom:20px !important;
+  z-index:31 !important;
+  color:var(--accent) !important;
+  font-size:.58rem !important;
+  letter-spacing:.1em !important;
+  text-transform:uppercase !important;
+}
+
+.corner-hashtag::before,
+.corner-hashtag::after{
+  content:none !important;
+}
+
+@media(max-width:700px){
+  .corner{
+    top:13px !important;
+    right:14px !important;
+    bottom:auto !important;
+    max-width:170px;
+  }
+
+  .corner::after{
+    font-size:.55rem !important;
+    line-height:1.4 !important;
+  }
+
+  .corner-hashtag{
+    top:auto !important;
+    right:14px !important;
+    bottom:12px !important;
+    font-size:.55rem !important;
   }
 }
