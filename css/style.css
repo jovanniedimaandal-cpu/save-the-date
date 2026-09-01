@@ -1490,57 +1490,6 @@ input:focus-visible{
 }
 
 
-/* ============================================================
-   CODE ENTRY DEADLINE
-   ============================================================ */
-
-.code-deadline{
-  width:100%;
-  margin:18px auto 0;
-  padding:20px 22px;
-
-  border:1px solid var(--border);
-  border-radius:18px;
-
-  background:var(--soft-background);
-
-  box-shadow:
-    0 10px 30px
-    var(--shadow);
-}
-
-.code-deadline .eyebrow{
-  margin-bottom:8px;
-}
-
-.code-deadline h3{
-  margin:6px 0 14px;
-
-  font:
-    400
-    clamp(1.45rem,4vw,2.2rem)
-    var(--serif);
-
-  color:var(--primary-text);
-}
-
-.code-deadline .mini{
-  gap:7px;
-}
-
-.code-deadline .mini span{
-  padding:7px 10px;
-
-  border-radius:8px;
-
-  background:var(--card-background);
-
-  font-size:.65rem;
-}
-
-.code-deadline .mini b{
-  color:var(--accent-dark);
-}
 
 
 /* ============================================================
@@ -1599,63 +1548,6 @@ input:focus-visible{
     margin-top:15px;
   }
 
-}
-
-/* ============================================================
-   SCENE CONTENT REVEAL — ONE ELEMENT AT A TIME
-   ============================================================ */
-
-.scene.active .inner > *{
-  opacity:0;
-  transform:translateY(18px);
-  animation:sceneReveal .75s cubic-bezier(.22,1,.36,1) forwards;
-}
-
-/* First element */
-.scene.active .inner > *:nth-child(1){
-  animation-delay:.12s;
-}
-
-/* Second element */
-.scene.active .inner > *:nth-child(2){
-  animation-delay:.28s;
-}
-
-/* Third element */
-.scene.active .inner > *:nth-child(3){
-  animation-delay:.44s;
-}
-
-/* Fourth element */
-.scene.active .inner > *:nth-child(4){
-  animation-delay:.60s;
-}
-
-/* Fifth element */
-.scene.active .inner > *:nth-child(5){
-  animation-delay:.76s;
-}
-
-/* Sixth element */
-.scene.active .inner > *:nth-child(6){
-  animation-delay:.92s;
-}
-
-/* Seventh element */
-.scene.active .inner > *:nth-child(7){
-  animation-delay:1.08s;
-}
-
-@keyframes sceneReveal{
-  from{
-    opacity:0;
-    transform:translateY(18px);
-  }
-
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
 }
 
 
@@ -1788,8 +1680,7 @@ input:focus-visible{
     opacity:1!important;
     transform:none!important;
   }
-
-}\n\n/* ============================================================\n   THEME POLISH — all colors come from wedding-data.js\n   No layout, interaction, or animation logic is changed here.\n   ============================================================ */\n\nbody{\n  background:var(--main-background);\n}\n\n#experience{\n  background:\n    radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--gold-soft) 18%, transparent), transparent 42%),\n    var(--main-background);\n}\n\n.scene{\n  background:\n    radial-gradient(circle at 50% 8%, color-mix(in srgb, var(--white) 55%, transparent), transparent 44%),\n    var(--main-background);\n}\n\n.intro{\n  background:\n    radial-gradient(circle at 50% 45%, color-mix(in srgb, var(--white) 22%, transparent), transparent 42%),\n    var(--intro-background);\n}\n\n.intro h1 em{\n  color:var(--gold);\n}\n\n.intro .primary{\n  background:var(--gold);\n  color:var(--primary-text);\n  border-color:var(--gold);\n  box-shadow:0 10px 28px var(--accent-shadow);\n}\n\n.intro .primary:hover{\n  background:var(--gold-soft);\n  border-color:var(--gold-soft);\n}\n\n.primary:hover{\n  box-shadow:0 10px 25px var(--accent-shadow);\n}\n\n.text-btn:hover{\n  background:var(--accent-wash);\n}\n\n.countdown{\n  background:color-mix(in srgb, var(--card-background) 88%, transparent);\n  box-shadow:0 18px 50px var(--shadow);\n}\n\n.countdown div{\n  background:var(--card-alt);\n}\n\n.card{\n  background:\n    linear-gradient(145deg, var(--card-background), var(--card-alt));\n  box-shadow:0 18px 50px var(--shadow);\n}\n\n.card input{\n  background:color-mix(in srgb, var(--white) 78%, var(--main-background));\n}\n\n.card input:focus{\n  box-shadow:0 0 0 4px var(--focus-ring);\n}\n\n.responses button{\n  background:\n    linear-gradient(145deg, var(--card-background), var(--card-alt));\n  box-shadow:0 10px 35px var(--shadow);\n}\n\n.responses button:hover{\n  background:var(--soft-background);\n  box-shadow:0 16px 40px var(--warm-shadow);\n}\n\n.number:hover,\n.number.selected{\n  box-shadow:0 8px 20px var(--accent-shadow);\n}\n\n.success{\n  background:var(--card-alt);\n}\n
+}
 
 /* ============================================================
    VISUAL POLISH — palette is controlled by wedding-data.js
@@ -2345,5 +2236,367 @@ input:focus-visible{
   .responses button,
   .number{
     transition:none !important;
+  }
+}
+
+
+/* ============================================================
+   COHESIVE STATIONERY DECORATION
+   ------------------------------------------------------------
+   CSS ONLY — final decorative pass.
+
+   Purpose:
+   • Make the quieter scenes feel designed, not empty
+   • Carry the botanical language from the cover through the app
+   • Add fine stationery-style framing and ornaments
+   • Keep all existing scene layout/flow untouched
+
+   This section intentionally does NOT redefine .scene positioning.
+   ============================================================ */
+
+/* Shared botanical artwork for interior scenes.
+   The mask is transparent, so only the branch itself is painted
+   with the theme's --botanical color from wedding-data.js. */
+.scene:not(.intro) > .inner::before{
+  content:"";
+  position:absolute;
+  left:-34px;
+  bottom:-34px;
+  width:150px;
+  height:230px;
+  background:var(--botanical);
+  opacity:.16;
+  pointer-events:none;
+  z-index:0;
+
+  -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 230'%3E%3Cg fill='none' stroke='white' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M8 226C24 187 38 148 52 112C67 72 91 42 126 18'/%3E%3Cpath d='M39 151C23 139 14 124 9 106'/%3E%3Cpath d='M51 119C70 108 83 94 91 77'/%3E%3Cpath d='M67 81C52 70 43 57 39 43'/%3E%3Cpath d='M86 52C103 43 116 31 126 18'/%3E%3C/g%3E%3Cg fill='white'%3E%3Cellipse transform='rotate(-42 18 118)' cx='18' cy='118' rx='5' ry='15'/%3E%3Cellipse transform='rotate(48 47 122)' cx='47' cy='122' rx='5' ry='15'/%3E%3Cellipse transform='rotate(-45 45 62)' cx='45' cy='62' rx='5' ry='15'/%3E%3Cellipse transform='rotate(48 72 88)' cx='72' cy='88' rx='5' ry='15'/%3E%3Cellipse transform='rotate(-42 76 56)' cx='76' cy='56' rx='5' ry='15'/%3E%3Cellipse transform='rotate(46 101 42)' cx='101' cy='42' rx='5' ry='15'/%3E%3Cellipse transform='rotate(-42 29 178)' cx='29' cy='178' rx='5' ry='15'/%3E%3Cellipse transform='rotate(46 53 158)' cx='53' cy='158' rx='5' ry='15'/%3E%3Ccircle cx='126' cy='18' r='4'/%3E%3Cellipse cx='126' cy='7' rx='4' ry='9'/%3E%3Cellipse transform='rotate(60 136 14)' cx='136' cy='14' rx='4' ry='9'/%3E%3Cellipse transform='rotate(-60 116 14)' cx='116' cy='14' rx='4' ry='9'/%3E%3C/g%3E%3C/svg%3E");
+  mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 230'%3E%3Cg fill='none' stroke='white' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M8 226C24 187 38 148 52 112C67 72 91 42 126 18'/%3E%3Cpath d='M39 151C23 139 14 124 9 106'/%3E%3Cpath d='M51 119C70 108 83 94 91 77'/%3E%3Cpath d='M67 81C52 70 43 57 39 43'/%3E%3Cpath d='M86 52C103 43 116 31 126 18'/%3E%3C/g%3E%3Cg fill='white'%3E%3Cellipse transform='rotate(-42 18 118)' cx='18' cy='118' rx='5' ry='15'/%3E%3Cellipse transform='rotate(48 47 122)' cx='47' cy='122' rx='5' ry='15'/%3E%3Cellipse transform='rotate(-45 45 62)' cx='45' cy='62' rx='5' ry='15'/%3E%3Cellipse transform='rotate(48 72 88)' cx='72' cy='88' rx='5' ry='15'/%3E%3Cellipse transform='rotate(-42 76 56)' cx='76' cy='56' rx='5' ry='15'/%3E%3Cellipse transform='rotate(46 101 42)' cx='101' cy='42' rx='5' ry='15'/%3E%3Cellipse transform='rotate(-42 29 178)' cx='29' cy='178' rx='5' ry='15'/%3E%3Cellipse transform='rotate(46 53 158)' cx='53' cy='158' rx='5' ry='15'/%3E%3Ccircle cx='126' cy='18' r='4'/%3E%3Cellipse cx='126' cy='7' rx='4' ry='9'/%3E%3Cellipse transform='rotate(60 136 14)' cx='136' cy='14' rx='4' ry='9'/%3E%3Cellipse transform='rotate(-60 116 14)' cx='116' cy='14' rx='4' ry='9'/%3E%3C/g%3E%3C/svg%3E");
+  -webkit-mask-repeat:no-repeat;
+  mask-repeat:no-repeat;
+  -webkit-mask-position:left bottom;
+  mask-position:left bottom;
+  -webkit-mask-size:contain;
+  mask-size:contain;
+}
+
+/* A mirrored, much fainter sprig gives the upper-right area
+   some visual balance without filling the whitespace. */
+.scene:not(.intro) > .inner::after{
+  content:"";
+  position:absolute;
+  right:-30px;
+  top:-24px;
+  width:105px;
+  height:155px;
+  background:var(--gold);
+  opacity:.075;
+  pointer-events:none;
+  z-index:0;
+  transform:scaleX(-1) rotate(8deg);
+
+  -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 230'%3E%3Cg fill='none' stroke='white' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M8 226C24 187 38 148 52 112C67 72 91 42 126 18'/%3E%3Cpath d='M39 151C23 139 14 124 9 106'/%3E%3Cpath d='M51 119C70 108 83 94 91 77'/%3E%3Cpath d='M67 81C52 70 43 57 39 43'/%3E%3Cpath d='M86 52C103 43 116 31 126 18'/%3E%3C/g%3E%3Cg fill='white'%3E%3Cellipse transform='rotate(-42 18 118)' cx='18' cy='118' rx='5' ry='15'/%3E%3Cellipse transform='rotate(48 47 122)' cx='47' cy='122' rx='5' ry='15'/%3E%3Cellipse transform='rotate(-45 45 62)' cx='45' cy='62' rx='5' ry='15'/%3E%3Cellipse transform='rotate(48 72 88)' cx='72' cy='88' rx='5' ry='15'/%3E%3Cellipse transform='rotate(-42 76 56)' cx='76' cy='56' rx='5' ry='15'/%3E%3Cellipse transform='rotate(46 101 42)' cx='101' cy='42' rx='5' ry='15'/%3E%3Cellipse transform='rotate(-42 29 178)' cx='29' cy='178' rx='5' ry='15'/%3E%3Cellipse transform='rotate(46 53 158)' cx='53' cy='158' rx='5' ry='15'/%3E%3Ccircle cx='126' cy='18' r='4'/%3E%3Cellipse cx='126' cy='7' rx='4' ry='9'/%3E%3Cellipse transform='rotate(60 136 14)' cx='136' cy='14' rx='4' ry='9'/%3E%3Cellipse transform='rotate(-60 116 14)' cx='116' cy='14' rx='4' ry='9'/%3E%3C/g%3E%3C/svg%3E");
+  mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 230'%3E%3Cg fill='none' stroke='white' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M8 226C24 187 38 148 52 112C67 72 91 42 126 18'/%3E%3Cpath d='M39 151C23 139 14 124 9 106'/%3E%3Cpath d='M51 119C70 108 83 94 91 77'/%3E%3Cpath d='M67 81C52 70 43 57 39 43'/%3E%3Cpath d='M86 52C103 43 116 31 126 18'/%3E%3C/g%3E%3Cg fill='white'%3E%3Cellipse transform='rotate(-42 18 118)' cx='18' cy='118' rx='5' ry='15'/%3E%3Cellipse transform='rotate(48 47 122)' cx='47' cy='122' rx='5' ry='15'/%3E%3Cellipse transform='rotate(-45 45 62)' cx='45' cy='62' rx='5' ry='15'/%3E%3Cellipse transform='rotate(48 72 88)' cx='72' cy='88' rx='5' ry='15'/%3E%3Cellipse transform='rotate(-42 76 56)' cx='76' cy='56' rx='5' ry='15'/%3E%3Cellipse transform='rotate(46 101 42)' cx='101' cy='42' rx='5' ry='15'/%3E%3Cellipse transform='rotate(-42 29 178)' cx='29' cy='178' rx='5' ry='15'/%3E%3Cellipse transform='rotate(46 53 158)' cx='53' cy='158' rx='5' ry='15'/%3E%3Ccircle cx='126' cy='18' r='4'/%3E%3Cellipse cx='126' cy='7' rx='4' ry='9'/%3E%3Cellipse transform='rotate(60 136 14)' cx='136' cy='14' rx='4' ry='9'/%3E%3Cellipse transform='rotate(-60 116 14)' cx='116' cy='14' rx='4' ry='9'/%3E%3C/g%3E%3C/svg%3E");
+  -webkit-mask-repeat:no-repeat;
+  mask-repeat:no-repeat;
+  -webkit-mask-position:left bottom;
+  mask-position:left bottom;
+  -webkit-mask-size:contain;
+  mask-size:contain;
+}
+
+/* Fine stationery corner marks. These are painted into the
+   inner element's background and therefore do not affect flow. */
+.scene:not(.intro) > .inner{
+  background-image:
+    linear-gradient(var(--gold),var(--gold)),
+    linear-gradient(var(--gold),var(--gold)),
+    linear-gradient(var(--gold),var(--gold)),
+    linear-gradient(var(--gold),var(--gold));
+  background-repeat:no-repeat;
+  background-size:
+    42px 1px,
+    1px 42px,
+    42px 1px,
+    1px 42px;
+  background-position:
+    left 0,
+    left 0,
+    right 0,
+    right 0;
+  background-origin:padding-box;
+  opacity:1;
+}
+
+/* Restore normal opacity for actual content; the corner marks
+   themselves remain subtle through the gold mix below. */
+.scene:not(.intro) > .inner{
+  background-image:
+    linear-gradient(color-mix(in srgb,var(--gold) 32%,transparent),color-mix(in srgb,var(--gold) 32%,transparent)),
+    linear-gradient(color-mix(in srgb,var(--gold) 32%,transparent),color-mix(in srgb,var(--gold) 32%,transparent)),
+    linear-gradient(color-mix(in srgb,var(--gold) 22%,transparent),color-mix(in srgb,var(--gold) 22%,transparent)),
+    linear-gradient(color-mix(in srgb,var(--gold) 22%,transparent),color-mix(in srgb,var(--gold) 22%,transparent));
+}
+
+/* More refined title ornament: the line is intentionally short
+   so the heading remains the hero. */
+.scene:not(.intro) h2::after{
+  content:"";
+  display:block;
+  width:38px;
+  height:1px;
+  margin:11px auto 0;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  opacity:.62;
+}
+
+/* Tiny center diamond above supporting copy where available. */
+.scene:not(.intro) p:first-of-type::before{
+  content:"◆";
+  display:block;
+  margin:0 auto 10px;
+  font-size:5px;
+  color:var(--gold);
+  opacity:.45;
+}
+
+/* Keep the ornamentation quiet on smaller screens. */
+@media(max-width:700px){
+  .scene:not(.intro) > .inner::before{
+    left:-24px;
+    bottom:-24px;
+    width:105px;
+    height:165px;
+    opacity:.11;
+  }
+
+  .scene:not(.intro) > .inner::after{
+    right:-20px;
+    top:-15px;
+    width:72px;
+    height:110px;
+    opacity:.055;
+  }
+
+  .scene:not(.intro) > .inner{
+    background-size:
+      28px 1px,
+      1px 28px,
+      28px 1px,
+      1px 28px;
+  }
+
+  .scene:not(.intro) h2::after{
+    width:30px;
+    margin-top:9px;
+  }
+
+  .scene:not(.intro) p:first-of-type::before{
+    margin-bottom:7px;
+  }
+}
+
+/* Reduced motion: decoration remains static. */
+@media(prefers-reduced-motion:reduce){
+  .scene:not(.intro) > .inner::before,
+  .scene:not(.intro) > .inner::after{
+    animation:none !important;
+  }
+}
+
+/* ============================================================
+   PHOTO STORY — SCENE 1 COVER
+   ------------------------------------------------------------
+   Uses cover-photo.png as a soft photographic memory beneath
+   the invitation typography. The image is deliberately muted
+   so the names remain the visual focus.
+
+   Asset required in the same folder as this CSS:
+   cover-photo.png
+   ============================================================ */
+
+.intro{
+  background:
+    linear-gradient(
+      180deg,
+      rgba(247,241,227,.72) 0%,
+      rgba(247,241,227,.62) 42%,
+      rgba(247,241,227,.76) 100%
+    ),
+    radial-gradient(
+      circle at 50% 40%,
+      rgba(255,253,245,.24),
+      transparent 52%
+    ),
+    url("cover-photo.jpg") center 50% / cover no-repeat !important;
+
+  background-blend-mode:normal;
+}
+
+/* A little more paper warmth around the edges keeps the photo
+   feeling printed beneath stationery rather than like a website hero. */
+.intro{
+  box-shadow:
+    inset 0 0 80px rgba(247,241,227,.22);
+}
+
+/* Keep the existing botanical artwork, but let the photograph
+   carry most of the visual weight on the cover. */
+.intro::before{
+  opacity:.34;
+}
+
+/* Preserve the existing frame while making it read like fine
+   printed stationery over the photograph. */
+.intro::after{
+  border-color:color-mix(in srgb,var(--intro-detail) 38%,transparent);
+  box-shadow:inset 0 0 45px rgba(255,253,245,.10);
+}
+
+/* The names become dark ink over the softened photograph. */
+.intro h1{
+  color:var(--primary-text) !important;
+  text-shadow:
+    0 1px 0 rgba(255,253,245,.46),
+    0 2px 10px rgba(81,72,63,.10) !important;
+}
+
+.intro h1 em{
+  color:var(--gold) !important;
+}
+
+.intro .eyebrow{
+  color:var(--accent) !important;
+}
+
+.intro .date{
+  color:var(--accent-dark) !important;
+}
+
+/* The cover CTA becomes the same olive family used throughout
+   the interior scenes, while keeping its existing interaction. */
+.intro .primary{
+  background:var(--accent) !important;
+  border-color:var(--accent) !important;
+  color:var(--white) !important;
+  box-shadow:0 12px 30px rgba(81,72,63,.18);
+}
+
+.intro .primary:hover{
+  background:var(--accent-dark) !important;
+}
+
+/* Existing BEGIN shimmer remains, but is softened against the photo. */
+.intro .primary::before{
+  background:linear-gradient(
+    100deg,
+    transparent,
+    rgba(255,249,232,.22),
+    transparent
+  );
+}
+
+/* ============================================================
+   PHOTO BACKGROUND — SCENE 2
+   ------------------------------------------------------------
+   Existing Scene 2 treatment retained, using the landscape photo
+   already supplied as question-photo.jpg.
+   ============================================================ */
+
+.scene[data-scene="2"]{
+  background:
+    linear-gradient(
+      180deg,
+      rgba(247,241,227,.84) 0%,
+      rgba(247,241,227,.76) 46%,
+      rgba(247,241,227,.84) 100%
+    ),
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(255,253,245,.30),
+      transparent 48%
+    ),
+    url("question-photo.jpg") center 64% / cover no-repeat !important;
+}
+
+.scene[data-scene="2"] > .inner{
+  background-color:rgba(247,241,227,.08);
+  border-radius:22px;
+}
+
+.scene[data-scene="2"]::before{
+  opacity:.10;
+}
+
+.scene[data-scene="2"]::after{
+  opacity:.035;
+}
+
+.scene[data-scene="2"] p.copy{
+  text-shadow:0 1px 10px rgba(255,253,245,.34);
+}
+
+/* ============================================================
+   MOBILE PHOTO TUNING
+   ============================================================ */
+
+@media(max-width:700px){
+
+  .intro{
+    background:
+      linear-gradient(
+        180deg,
+        rgba(247,241,227,.78) 0%,
+        rgba(247,241,227,.66) 44%,
+        rgba(247,241,227,.80) 100%
+      ),
+      radial-gradient(
+        circle at 50% 40%,
+        rgba(255,253,245,.22),
+        transparent 52%
+      ),
+      url("cover-photo.jpg") center 48% / cover no-repeat !important;
+  }
+
+  .intro::before{
+    opacity:.24;
+  }
+
+  .intro::after{
+    border-color:color-mix(in srgb,var(--intro-detail) 30%,transparent);
+  }
+
+  .intro h1{
+    text-shadow:
+      0 1px 0 rgba(255,253,245,.52),
+      0 2px 8px rgba(81,72,63,.09) !important;
+  }
+
+  .scene[data-scene="2"]{
+    background:
+      linear-gradient(
+        180deg,
+        rgba(247,241,227,.87) 0%,
+        rgba(247,241,227,.78) 44%,
+        rgba(247,241,227,.86) 100%
+      ),
+      radial-gradient(
+        circle at 50% 20%,
+        rgba(255,253,245,.26),
+        transparent 50%
+      ),
+      url("question-photo.jpg") center 67% / cover no-repeat !important;
+  }
+
+  .scene[data-scene="2"] > .inner{
+    background-color:rgba(247,241,227,.06);
+    border-radius:18px;
+  }
+}
+
+/* Keep all photographic decoration static when reduced motion is requested. */
+@media(prefers-reduced-motion:reduce){
+  .intro::before,
+  .intro::after{
+    animation:none !important;
   }
 }
